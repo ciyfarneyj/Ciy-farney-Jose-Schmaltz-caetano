@@ -9,7 +9,6 @@
     "web": "expo start --web"
   },
   "dependencies": {
-    "@anthropic-ai/sdk": "^0.24.0",
     "@expo/vector-icons": "^14.0.0",
     "@react-native-async-storage/async-storage": "1.23.1",
     "@react-navigation/bottom-tabs": "^6.5.20",
@@ -18,10 +17,10 @@
     "date-fns": "^3.6.0",
     "expo": "~51.0.0",
     "expo-av": "~14.0.7",
-    "expo-image-picker": "~15.0.7",
     "expo-calendar": "~12.0.1",
     "expo-document-picker": "~12.0.2",
     "expo-file-system": "~17.0.1",
+    "expo-image-picker": "~15.0.7",
     "expo-linking": "~6.3.1",
     "expo-notifications": "~0.28.9",
     "expo-print": "~13.0.1",
