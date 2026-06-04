@@ -14,6 +14,13 @@ import TransactionsScreen from '../screens/TransactionsScreen';
 import ReportsScreen from '../screens/ReportsScreen';
 import AlertsScreen from '../screens/AlertsScreen';
 import AddTransactionScreen from '../screens/AddTransactionScreen';
+import ToolsScreen from '../screens/ToolsScreen';
+import ExportScreen from '../screens/ExportScreen';
+import ImportScreen from '../screens/ImportScreen';
+import AudioEntryScreen from '../screens/AudioEntryScreen';
+import PdfImportScreen from '../screens/PdfImportScreen';
+import SettingsScreen from '../screens/SettingsScreen';
+import BoletoScanScreen from '../screens/BoletoScanScreen';
 
 export type AuthStackParamList = {
   Login: undefined;
@@ -22,14 +29,21 @@ export type AuthStackParamList = {
 
 export type MainTabParamList = {
   Dashboard: undefined;
-  Transações: undefined;
-  Relatórios: undefined;
+  'Transações': undefined;
+  'Relatórios': undefined;
   Alertas: undefined;
+  Ferramentas: undefined;
 };
 
 export type RootStackParamList = {
   MainTabs: undefined;
   AddTransaction: { type?: 'receita' | 'despesa' };
+  ExportScreen: undefined;
+  ImportScreen: undefined;
+  AudioEntryScreen: undefined;
+  PdfImportScreen: undefined;
+  SettingsScreen: undefined;
+  BoletoScanScreen: undefined;
 };
 
 const AuthStack = createNativeStackNavigator<AuthStackParamList>();
@@ -54,7 +68,8 @@ type TabIconName =
   | 'view-dashboard'
   | 'format-list-bulleted'
   | 'chart-bar'
-  | 'bell-alert';
+  | 'bell-alert'
+  | 'tools';
 
 function MainTabs() {
   return (
@@ -66,6 +81,7 @@ function MainTabs() {
             'Transações': 'format-list-bulleted',
             'Relatórios': 'chart-bar',
             Alertas: 'bell-alert',
+            Ferramentas: 'tools',
           };
           const iconName: TabIconName = icons[route.name] ?? 'view-dashboard';
           return (
@@ -108,6 +124,11 @@ function MainTabs() {
         component={AlertsScreen}
         options={{ title: 'Alertas' }}
       />
+      <Tab.Screen
+        name="Ferramentas"
+        component={ToolsScreen}
+        options={{ title: 'Ferramentas' }}
+      />
     </Tab.Navigator>
   );
 }
@@ -127,6 +148,72 @@ function MainNavigator() {
           title: 'Nova Transação',
           presentation: 'modal',
           headerStyle: { backgroundColor: theme.colors.primary },
+          headerTintColor: '#fff',
+          headerTitleStyle: { fontWeight: 'bold' },
+        }}
+      />
+      <RootStack.Screen
+        name="ExportScreen"
+        component={ExportScreen}
+        options={{
+          title: 'Exportar Dados',
+          presentation: 'modal',
+          headerStyle: { backgroundColor: theme.colors.primary },
+          headerTintColor: '#fff',
+          headerTitleStyle: { fontWeight: 'bold' },
+        }}
+      />
+      <RootStack.Screen
+        name="ImportScreen"
+        component={ImportScreen}
+        options={{
+          title: 'Importar Excel',
+          presentation: 'modal',
+          headerStyle: { backgroundColor: '#217346' },
+          headerTintColor: '#fff',
+          headerTitleStyle: { fontWeight: 'bold' },
+        }}
+      />
+      <RootStack.Screen
+        name="AudioEntryScreen"
+        component={AudioEntryScreen}
+        options={{
+          title: 'Lançamento por Voz',
+          presentation: 'modal',
+          headerStyle: { backgroundColor: '#9334e6' },
+          headerTintColor: '#fff',
+          headerTitleStyle: { fontWeight: 'bold' },
+        }}
+      />
+      <RootStack.Screen
+        name="PdfImportScreen"
+        component={PdfImportScreen}
+        options={{
+          title: 'Importar Fatura PDF',
+          presentation: 'modal',
+          headerStyle: { backgroundColor: '#f57c00' },
+          headerTintColor: '#fff',
+          headerTitleStyle: { fontWeight: 'bold' },
+        }}
+      />
+      <RootStack.Screen
+        name="SettingsScreen"
+        component={SettingsScreen}
+        options={{
+          title: 'Configurações',
+          presentation: 'modal',
+          headerStyle: { backgroundColor: theme.colors.primary },
+          headerTintColor: '#fff',
+          headerTitleStyle: { fontWeight: 'bold' },
+        }}
+      />
+      <RootStack.Screen
+        name="BoletoScanScreen"
+        component={BoletoScanScreen}
+        options={{
+          title: 'Escanear Boleto',
+          presentation: 'modal',
+          headerStyle: { backgroundColor: '#00796b' },
           headerTintColor: '#fff',
           headerTitleStyle: { fontWeight: 'bold' },
         }}

@@ -11,16 +11,50 @@
       "resizeMode": "contain",
       "backgroundColor": "#1a73e8"
     },
+    "plugins": [
+      [
+        "expo-av",
+        { "microphonePermission": "Permitir que o FinanceControl acesse o microfone para lançamento por voz." }
+      ],
+      [
+        "expo-calendar",
+        { "calendarPermission": "Permitir que o FinanceControl acesse o calendário para criar lembretes de vencimento." }
+      ],
+      [
+        "expo-notifications",
+        { "sounds": [] }
+      ],
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "Permitir que o FinanceControl acesse suas fotos para escanear boletos.",
+          "cameraPermission": "Permitir que o FinanceControl use a câmera para fotografar boletos e carnês."
+        }
+      ]
+    ],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.financecontrol.app"
+      "bundleIdentifier": "com.financecontrol.app",
+      "infoPlist": {
+        "NSMicrophoneUsageDescription": "Usado para lançamento de transações por voz.",
+        "NSCalendarsUsageDescription": "Usado para criar lembretes de vencimento no calendário.",
+        "NSCameraUsageDescription": "Usado para fotografar boletos e carnês.",
+        "NSPhotoLibraryUsageDescription": "Usado para selecionar fotos de boletos da galeria."
+      }
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#1a73e8"
       },
-      "package": "com.financecontrol.app"
+      "package": "com.financecontrol.app",
+      "permissions": [
+        "android.permission.RECORD_AUDIO",
+        "android.permission.READ_CALENDAR",
+        "android.permission.WRITE_CALENDAR",
+        "android.permission.CAMERA",
+        "android.permission.READ_EXTERNAL_STORAGE"
+      ]
     },
     "web": {
       "favicon": "./assets/favicon.png"
